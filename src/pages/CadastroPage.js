@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Tudo } from "../constants/Tudo";
-import Logo from "../components/Logo";
-import { Inputs } from "../constants/StyledInputs";
-import { ButtonSave } from "../constants/ButtonSave";
-import { StyledLinkTo } from "../constants/StyledLinkTo";
+import { Tudo } from "../constants/Tudo.js";
+import Logo from "../components/Logo.js";
+import { Inputs } from "../constants/StyledInputs.js";
+import { ButtonSave } from "../constants/ButtonSave.js";
+import { StyledLinkTo } from "../constants/StyledLinkTo.js";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
