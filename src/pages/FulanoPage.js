@@ -43,7 +43,7 @@ export default function FulanoPage(){
                         {listaMoney.length === 0?(<div className="listavazia">Não há registros de<br/> entrada ou saída</div>)
                         :
                         (<ListaEntradaSaida>
-                            {listaMoney.localeCompare((i) => <EntradasSaidas key={i.id} status={i.status} valor={i.valor} descricao={i.descricao} setSaldoInit={setSaldoInit} saldoInit={saldoInit}/>)}
+                            {listaMoney.map((i) => <EntradasSaidas key={i.id} status={i.status} valor={i.valor} descricao={i.descricao} setSaldoInit={setSaldoInit} saldoInit={saldoInit}/>)}
                             <Saldo>
                                 <p>
                                     <strong>
