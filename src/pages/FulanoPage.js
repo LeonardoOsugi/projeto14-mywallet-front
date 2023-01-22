@@ -12,7 +12,7 @@ export default function FulanoPage(){
     const[listaMoney, setListaMoney] = useState("");
     const[saldoInit, setSaldoInit] = useState(2849.96);
 
-    const nome = JSON.parse(localStorage.getItem('name'));
+    // const nome = JSON.parse(localStorage.getItem('name'));
     const token = JSON.parse(localStorage.getItem('token'));
     
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function FulanoPage(){
                 <Corpo>
                     <Titulo>
                         <h1>
-                            Olá, {nome}
+                            Olá, Fulano
                         </h1>
                         <link to="/">
                             <img src={VoltaLogin} alt="Volta Login"/>
@@ -65,7 +65,7 @@ export default function FulanoPage(){
                                 </p>
                             </Entrada>
                         </Link>
-                        <Link to="">
+                        <Link to="/newexit">
                             <Saida>
                                 <img src={mine} alt="mine" />
                                 <p>

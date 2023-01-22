@@ -12,7 +12,7 @@ export default function LoginPage(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const navegate = useNavigate;
+    const navegate = useNavigate();
 
     function addInfo(e){
         e.preventDefault();
@@ -21,16 +21,17 @@ export default function LoginPage(){
 
         const body = {
             email: email,
-            passaword: password
+            password: password
         };
-
         axios.post(url, body).then((res) =>{
             localStorage.setItem("token", JSON.stringify(res.data.token));
-            localStorage.setItem("name", JSON.stringify(res.data.nome));
+            // localStorage.setItem("name", JSON.stringify(res.data.nome));
 
+            alert("funfou");
             navegate("/fulano");
         }).catch((err) => {
-            alert(err.response.data.message);
+            console.log("não funfou")
+            alert(err.response.data);
         });
     }
     return(

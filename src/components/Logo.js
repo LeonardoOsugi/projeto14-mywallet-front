@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import MyWallet from "MyWallet.svg";
+import mywallet from "../assets/img/MyWallet.svg";
 
 
 export default function Logo(){
     return(
         <ConteinerDaLogo>
-            <img src={MyWallet} alt="Logo"/>
+            <img src={mywallet} alt="Logo"/>
         </ConteinerDaLogo>
     )
 };

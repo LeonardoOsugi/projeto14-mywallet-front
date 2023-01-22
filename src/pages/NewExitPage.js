@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Tudo } from "../constants/Tudo";
-import { Inputs } from "../constants/StyledInputs";
-import { ButtonSave } from "../constants/ButtonSave";
+import { Tudo } from "../constants/Tudo.js";
+import { Inputs } from "../constants/StyledInputs.js";
+import { ButtonSave } from "../constants/ButtonSave.js";
 import axios from  "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

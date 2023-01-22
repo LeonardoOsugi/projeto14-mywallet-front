@@ -18,7 +18,7 @@ export default function CadastroPage(){
 
     function addCadastro(e){
         e.preventDefault();
-
+        //
         const url = `${process.env.REACT_APP_API_URL}cadastro`;
 
         const body = {
@@ -28,11 +28,14 @@ export default function CadastroPage(){
             confirmPassword: confirmPassword
         };
 
+        console.log("abbb");
+
         axios.post(url, body).then(()=>{
             alert("Cadastro realizado");
             navegate("/");
         }).catch((err)=>{
-            alert(err.response.data.message);
+            console.log(err);
+            alert(err.response);
         });
     };
 
