@@ -2,18 +2,12 @@ import styled from "styled-components";
 import dayjs from "dayjs";
 import { useEffect } from "react";
 
-
-export default function EntradasSaidas(status, valor, descricao, setSaldoInit, saldoInit){
+//status, valor, descricao, setSaldoInit, saldoInit
+export default function EntradasSaidas(props){
+    const {status, valor, descricao} = props;
     const date = dayjs().locale("pt").format("DD/MM");
 
-    useEffect(() =>{
-        if(status === "entrada"){
-            setSaldoInit(saldoInit + parseFloat(valor));
-        }else{
-            setSaldoInit(saldoInit - parseFloat(valor));
-        };
-    });
-
+    
     return(
         <LadoALadoDeCaboARabo>
             <Data>
@@ -34,9 +28,11 @@ export default function EntradasSaidas(status, valor, descricao, setSaldoInit, s
 };
 
 const LadoALadoDeCaboARabo = styled.div`
+            display: flex;
             flex-direction: row;
             justify-content: space-around;
             p{
+                width: 100%;
                 font-family: 'Raleway';
                 font-size: 16px;
             }

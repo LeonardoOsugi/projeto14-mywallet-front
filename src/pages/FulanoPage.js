@@ -9,9 +9,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function FulanoPage(){
-    const[listaMoney, setListaMoney] = useState("");
-    const[saldoInit, setSaldoInit] = useState(2849.96);
-
+    const[listaMoney, setListaMoney] = useState([]);
+    //2849.96
     // const nome = JSON.parse(localStorage.getItem('name'));
     const token = JSON.parse(localStorage.getItem('token'));
     
@@ -21,10 +20,12 @@ export default function FulanoPage(){
                 'Authorization': `Bearer ${token}`
             }
         }).then((res) => {
-            setListaMoney(res.data);
+            console.log(res.data);
+            setListaMoney(JSON.parse(JSON.stringify(res.data)));
         }).catch((err) => {
             alert(err.response.data);
         });
+
     },[]);
 
     return(
@@ -35,15 +36,16 @@ export default function FulanoPage(){
                         <h1>
                             Olá, Fulano
                         </h1>
-                        <link to="/">
+                        <Link to="/">
                             <img src={VoltaLogin} alt="Volta Login"/>
-                        </link>
+                        </Link>
                     </Titulo>
                     <Lista>
                         {listaMoney.length === 0?(<div className="listavazia">Não há registros de<br/> entrada ou saída</div>)
                         :
                         (<ListaEntradaSaida>
-                            {listaMoney.map((i) => <EntradasSaidas key={i.id} status={i.status} valor={i.valor} descricao={i.descricao} setSaldoInit={setSaldoInit} saldoInit={saldoInit}/>)}
+                            {listaMoney.map((i) => <EntradasSaidas key={i._id} status={i.status} valor={i.valor} descricao={i.descricao}/>
+                            )}
                             <Saldo>
                                 <p>
                                     <strong>
@@ -51,7 +53,7 @@ export default function FulanoPage(){
                                     </strong>
                                 </p>
                                 <p className="saldoAtual">
-                                    {saldoInit}
+                                    {listaMoney.reduce((lastCount, lista) => lista.status === "entrada"? lastCount + Number(lista.valor) : lastCount - Number(lista.valor), 0)}
                                 </p>
                             </Saldo>
                         </ListaEntradaSaida>)}

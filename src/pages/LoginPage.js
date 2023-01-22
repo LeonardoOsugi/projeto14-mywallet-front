@@ -25,7 +25,7 @@ export default function LoginPage(){
         };
         axios.post(url, body).then((res) =>{
             localStorage.setItem("token", JSON.stringify(res.data.token));
-            // localStorage.setItem("name", JSON.stringify(res.data.nome));
+            // localStorage.setItem("name", JSON.stringify(res.data.name));
 
             alert("funfou");
             navegate("/fulano");
