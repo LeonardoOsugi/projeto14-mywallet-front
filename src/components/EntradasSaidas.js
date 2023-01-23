@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import dayjs from "dayjs";
-import { useEffect } from "react";
 
 //status, valor, descricao, setSaldoInit, saldoInit
 export default function EntradasSaidas(props){
     const {status, valor, descricao} = props;
     const date = dayjs().locale("pt").format("DD/MM");
+
 
     
     return(
@@ -18,9 +18,9 @@ export default function EntradasSaidas(props){
             <p>
                 {descricao}
             </p>
-            <Altera>
+            <Altera entsai={status === "entrada"?"#03AC00":"#C70000"}>
                 <p>
-                    {valor}
+                    {Number(valor).toFixed(2)}
                 </p>
             </Altera>
         </LadoALadoDeCaboARabo>
@@ -30,9 +30,11 @@ export default function EntradasSaidas(props){
 const LadoALadoDeCaboARabo = styled.div`
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
             p{
-                width: 100%;
                 font-family: 'Raleway';
                 font-size: 16px;
             }
@@ -45,7 +47,5 @@ const Altera = styled.div`
 `;
 
 const Data = styled.div`
-            p{
-                color: "#C6C6C6";
-            }
+                color: gray;
 `;

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default function FulanoPage(){
     const[listaMoney, setListaMoney] = useState([]);
     //2849.96
-    // const nome = JSON.parse(localStorage.getItem('name'));
+    // const name = JSON.parse(localStorage.getItem('name'));
     const token = JSON.parse(localStorage.getItem('token'));
     
     useEffect(() => {
@@ -52,9 +52,11 @@ export default function FulanoPage(){
                                         Saldo
                                     </strong>
                                 </p>
+                                <SaldoAtual>
                                 <p className="saldoAtual">
-                                    {listaMoney.reduce((lastCount, lista) => lista.status === "entrada"? lastCount + Number(lista.valor) : lastCount - Number(lista.valor), 0)}
+                                    {listaMoney.reduce((lastCount, lista) => lista.status === "entrada"? lastCount + Number(lista.valor) : lastCount - Number(lista.valor), 0).toFixed(2)}
                                 </p>
+                                </SaldoAtual>
                             </Saldo>
                         </ListaEntradaSaida>)}
                     </Lista>
@@ -176,13 +178,19 @@ const ListaEntradaSaida = styled.div`
 `;
 
 const Saldo = styled.div`
+        display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
+        position: fixed;
+        margin-top: 80px;
         p{
+            margin-left: 10px;
             font-family: "Raleway";
             font-size: 17px;
         }
-        .saldoatual{
-            color: "#03AC00";
-        }
+`;
+
+const SaldoAtual = styled.div`
+        margin-left:225%; 
+        color: green;
 `;
